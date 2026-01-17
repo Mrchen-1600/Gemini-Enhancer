@@ -1,4 +1,4 @@
-# 🚀 Gemini Enhancer (Gemini 增强助手)
+# 🚀 Gemini Enhancer (Gemini 增强助手V1.0)
 
 
 
@@ -7,12 +7,13 @@
 <div align="center">
     <font size="4">
         <strong>
-            <a href="">脚本安装</a> | 
-            <a href="https://github.com/Mrchen-1600/Gemini-Enhancer">使用说明</a> |
+            <a href="https://greasyfork.org/zh-CN/scripts/563034-gemini-%E5%A2%9E%E5%BC%BA%E5%8A%A9%E6%89%8B-v1-0">脚本安装</a> | 
+            <a href="https://github.com/Mrchen-1600/Gemini-Enhancer/blob/main/README.md">使用说明</a> |
             <a href="https://github.com/Mrchen-1600/Gemini-Enhancer/issues">问题反馈</a>
         </strong>
     </font>
 </div>
+
 
 
 <div align="center"><font size="4"><strong>如果这个脚本对你有帮助，请点击右上角的 ⭐ Star 支持一下！感谢！</strong></font></div>
@@ -37,7 +38,7 @@
 
 ⚠️：针对水印附近颜色/图案简单的图片去水印效果较好，如果水印附近出现文字/复杂图案，生成效果不佳。
 
-**使用方式**：单击生成的图片，图片右上角将自动出现**“去水印保存”**按键，单击按钮即可自动去水印保存图片。
+**使用方式**：单击生成的图片，图片右上角将自动出现 **“去水印保存”** 按键，单击按钮即可自动去水印保存图片。
 
 <div align="center" style="display: flex; justify-content: center; gap: 10px;">   <img src="imgs/10.png" alt="单击图片" style="width: 30%;">   <img src="imgs/8.png" alt="右上角自动出现按钮" style="width: 30%;">   <img src="imgs/9.png" alt="去除效果" style="width: 30%;"> </div>
 
@@ -101,8 +102,8 @@
 
 2. **安装脚本**：
    
-   - **方式 A (推荐)**：[点击此处安装脚本]() 
-   - **方式 B**：前往 [Greasy Fork](https://greasyfork.org/zh-CN) 搜索 "Gemini 增强助手" 进行安装。
+   - **方式 A (推荐)**：[点击此处安装脚本](https://greasyfork.org/zh-CN/scripts/563034-gemini-%E5%A2%9E%E5%BC%BA%E5%8A%A9%E6%89%8B-v1-0) 
+   - **方式 B**：前往 [Greasy Fork](https://greasyfork.org/zh-CN) 搜索 "Gemini 增强助手 V1.0" （作者：Mrchen1600）进行安装。
    
 3. **刷新页面**：打开 [Gemini](https://gemini.google.com/app)，你应该就能看到右侧的悬浮按钮了。
 

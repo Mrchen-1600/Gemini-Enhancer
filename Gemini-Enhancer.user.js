@@ -2,7 +2,7 @@
 // @name         Gemini 增强助手 V1.0
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  问题目录 + 提示词仓库 + 图片去水印保存
+// @description  对话跳转目录 + 提示词管理仓库 + 图片去水印保存
 // @author       Mrchen
 // @match        https://gemini.google.com/*
 // @grant        GM_addStyle
