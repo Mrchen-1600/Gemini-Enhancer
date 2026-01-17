@@ -248,6 +248,21 @@
 
     // ================= 5 目录模块 =================
     let tocPanel, tocList, lastTOCData = "";
+    // 提取唯一的对话列表数据，保证渲染时和点击时使用相同逻辑查找元素
+    function getUniqueQueries() {
+        const containers = document.querySelectorAll('.user-query-container, [data-test-id="user-query"]');
+        const unique = [];
+        const seen = new Set();
+        containers.forEach(c => {
+            const t = c.innerText.replace(/\s+/g, ' ').trim();
+            if (t.length > 1 && !seen.has(t)) {
+                seen.add(t);
+                unique.push({el: c, text: t});
+            }
+        });
+        return unique;
+    }
+    
     function initTOC() {
         if (document.getElementById('gemini-toc-btn')) return;
         const btn = el('div', 'gemini-float-btn docked-right', '📂');
@@ -270,19 +285,22 @@
 
     function updateTOCList(force = false) {
         if (!tocPanel || tocPanel.style.display === 'none') return;
-        const containers = document.querySelectorAll('.user-query-container, [data-test-id="user-query"]');
-        const unique = [], seen = new Set();
-        containers.forEach(c => {
-            const t = c.innerText.replace(/\s+/g, ' ').trim();
-            if (t.length > 1 && !seen.has(t)) { seen.add(t); unique.push({el:c, text:t}); }
-        });
+        const unique = getUniqueQueries();
         const currentData = unique.map(u => u.text).join('|');
         if (!force && currentData === lastTOCData) return;
         lastTOCData = currentData;
         while(tocList.firstChild) tocList.removeChild(tocList.firstChild);
         if (unique.length === 0) { tocList.appendChild(el('div', '', '暂无记录')); return; }
         unique.forEach((item, idx) => {
-            tocList.appendChild(el('div', 'toc-item', `${idx+1}. ${item.text}`, () => item.el.scrollIntoView({behavior:'smooth', block:'center'})));
+            tocList.appendChild(el('div', 'toc-item', `${idx+1}. ${item.text}`, () => {
+                const liveUnique = getUniqueQueries(); 
+                const target = liveUnique[idx]; 
+                if (target && target.el && target.el.isConnected) {
+                    target.el.scrollIntoView({behavior:'smooth', block:'center'});
+                } else if (item.el) {
+                    item.el.scrollIntoView({behavior:'smooth', block:'center'});
+                }
+            }));
         });
     }
 
