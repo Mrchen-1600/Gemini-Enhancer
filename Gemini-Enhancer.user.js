@@ -9,6 +9,9 @@
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_xmlhttpRequest
+// @homepageURL  https://github.com/Mrchen-1600/Gemini-Enhancer
+// @supportURL   https://github.com/Mrchen-1600/Gemini-Enhancer/issues
+// @license      Apache-2.0
 // ==/UserScript==
 
 (function() {
