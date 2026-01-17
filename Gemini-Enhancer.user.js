@@ -8,6 +8,7 @@
 // @grant        GM_addStyle
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @grant        GM_registerMenuCommand
 // @grant        GM_xmlhttpRequest
 // @homepageURL  https://github.com/Mrchen-1600/Gemini-Enhancer
 // @supportURL   https://github.com/Mrchen-1600/Gemini-Enhancer/issues
@@ -220,7 +221,32 @@
         });
     }
 
-    // ================= 4 目录模块 =================
+    // ================= 4 配置面板 =================
+    function initAboutPanel() {
+        GM_registerMenuCommand("⭐ 支持作者 / Star", showAboutModal);
+    }
+
+    function showAboutModal() {
+        if (document.getElementById('enhancer-about-modal')) return;
+        
+        const starLink = el('a', 'star-btn', '⭐ Star on GitHub');
+        starLink.href = 'https://github.com/Mrchen-1600/Gemini-Enhancer';
+        starLink.target = '_blank';
+
+        const overlay = el('div', 'about-overlay', [
+            el('div', 'about-modal', [
+                el('div', 'about-title', '🚀 Gemini 增强助手'),
+                el('div', 'about-desc', '如果觉得这个脚本对你有帮助，请到 GitHub 点亮一颗 Star 支持作者！你的支持是我最大的动力。'),
+                starLink,
+                el('button', 'close-btn', '关闭窗口', () => overlay.remove())
+            ])
+        ]);
+        
+        overlay.id = 'enhancer-about-modal';
+        document.body.appendChild(overlay);
+    }
+
+    // ================= 5 目录模块 =================
     let tocPanel, tocList, lastTOCData = "";
     function initTOC() {
         if (document.getElementById('gemini-toc-btn')) return;
@@ -260,7 +286,7 @@
         });
     }
 
-    // ================= 5 提示词模块  =================
+    // ================= 6 提示词模块  =================
     let promptPanel, promptMain, sidebar, currentTag = '全部', currentSearch = '';
     let isTagEditMode = false;
     let dragSrcEl = null; // 拖拽源引用
@@ -535,7 +561,7 @@
     }
     function fillInput(text) { const area=document.querySelector('.ql-editor, [contenteditable="true"], textarea'); if(area){ area.focus(); document.execCommand('insertText', false, text); } }
 
-    // ================= 6 图片去水印 (拉伸模糊算法) =================
+    // ================= 7 图片去水印 (拉伸模糊算法) =================
     function initImageHandler() {
         document.querySelectorAll('img').forEach(img => {
             if (img.naturalWidth > 500 && img.naturalHeight > 500 && img.width > 250 && !img.dataset.enhanced) {
@@ -587,9 +613,9 @@
         function fail() { btn.textContent = '❌'; setTimeout(()=>btn.textContent='✂️ 去水印保存', 2000); }
     }
 
-    // ================= 7 启动 =================
+    // ================= 8 启动 =================
     function start() {
-        initTOC(); initPromptManager();
+        initTOC(); initPromptManager(); initAboutPanel();
         setInterval(() => { updateTOCList(); initImageHandler(); }, CONFIG.pollInterval);
     }
     window.addEventListener('load', start);
